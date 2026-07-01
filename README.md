@@ -1,16 +1,17 @@
-# Pi Config
+# pi-config
 
-Portable Pi package for personal extensions and skills.
+Personal Pi package for extensions and skills.
 
 ## Install
 
 ```bash
-pi install git:git@github.com:YOUR_USER/YOUR_REPO.git
+pi install git:git@github.com:jp-belanger/pi-config.git
 ```
 
 For local development from this checkout:
 
 ```bash
+cd ~/src/pi-config
 pi install "$(pwd)"
 ```
 
@@ -31,5 +32,5 @@ pi update --extensions
 ## Remove
 
 ```bash
-pi remove git:git@github.com:YOUR_USER/YOUR_REPO.git
+pi remove git:git@github.com:jp-belanger/pi-config.git
 ```

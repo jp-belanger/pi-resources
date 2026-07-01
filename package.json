@@ -1,8 +1,8 @@
 {
-  "name": "personal-config",
+  "name": "pi-config",
   "version": "0.1.0",
   "private": true,
-  "description": "Portable Pi extensions and skills package.",
+  "description": "Personal Pi extensions and skills package.",
   "keywords": [
     "pi-package"
   ],
