@@ -6,6 +6,9 @@
 ## Decision
 What we chose, stated actively ("We will use X for Y") and why. One short paragraph max.
 
+## Context
+The forces driving this decision and the tensions between them. Stated concisely as value-neutral, objective facts.
+
 ## Alternatives considered
 Option → why rejected. One line each.
 
