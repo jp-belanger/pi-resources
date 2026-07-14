@@ -1,6 +1,7 @@
 ---
 name: commit
 description: Create high-quality source git commits
+disable-model-invocation: true
 ---
 
 # Commit

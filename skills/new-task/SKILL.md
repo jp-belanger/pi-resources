@@ -1,6 +1,7 @@
 ---
 name: new-task
 description: Interview the user about a proposed task before implementation
+disable-model-invocation: true
 ---
 
 # New Task
