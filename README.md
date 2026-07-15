@@ -1,6 +1,6 @@
 # pi-config
 
-Personal Pi package for extensions and skills.
+Personal Pi package for extensions and prompt templates.
 
 ## Install
 
@@ -17,7 +17,7 @@ pi install "$(pwd)"
 
 ## Reload changes
 
-After changing extensions or skills, reload Pi:
+After changing extensions or prompt templates, reload Pi:
 
 ```text
 /reload

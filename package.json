@@ -2,7 +2,7 @@
   "name": "pi-config",
   "version": "0.1.0",
   "private": true,
-  "description": "Personal Pi extensions and skills package.",
+  "description": "Personal Pi extensions and prompt templates package.",
   "keywords": [
     "pi-package"
   ],
@@ -12,8 +12,8 @@
     "extensions": [
       "./extensions"
     ],
-    "skills": [
-      "./skills"
+    "prompts": [
+      "./prompts"
     ]
   },
   "peerDependencies": {
