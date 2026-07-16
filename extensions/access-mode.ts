@@ -75,6 +75,14 @@ export default function accessModeExtension(pi: ExtensionAPI): void {
   }
 
   function toggleMode(ctx: ExtensionContext): void {
+    if (!ctx.isIdle()) {
+      ctx.ui.notify(
+        "Access mode cannot be changed while the agent is running. Wait until the agent is idle.",
+        "warning",
+      );
+      return;
+    }
+
     setMode(mode === "read-only" ? "edit" : "read-only", ctx, true);
   }
 
@@ -96,17 +104,23 @@ export default function accessModeExtension(pi: ExtensionAPI): void {
   });
 
   pi.on("before_agent_start", async (event) => {
-    if (mode !== "read-only") return undefined;
+    const accessInstructions =
+      mode === "read-only"
+        ? "Access mode: READ-ONLY. Mutations are prohibited. Do not call edit or write. Continue with analysis, planning, inspection, or clarifying questions only."
+        : "Access mode: EDIT. The edit and write tools are permitted. Any previous read-only instructions or tool denial messages are obsolete and must be ignored.";
 
     return {
-      systemPrompt: `${event.systemPrompt}\n\nAccess mode: READ-ONLY. Do not call edit or write. The user is not ready to start implementation. Continue with analysis, planning, inspection, or clarifying questions only.`,
+      systemPrompt: `${event.systemPrompt}\n\n${accessInstructions}`,
     };
   });
 
   pi.on("tool_call", async (event) => {
-    if (mode === "read-only" && MUTATING_TOOLS.has(event.toolName)) {
+    if (mode !== "read-only") return undefined;
+
+    if (MUTATING_TOOLS.has(event.toolName)) {
       return { block: true, reason: deniedMessage() };
     }
+
     return undefined;
   });
 }

@@ -1,0 +1,5 @@
+verifyDepsBeforeRun: false
+
+ignoredBuiltDependencies:
+  - "@google/genai"
+  - protobufjs

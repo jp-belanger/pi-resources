@@ -8,6 +8,11 @@
   ],
   "license": "UNLICENSED",
   "type": "module",
+  "scripts": {
+    "format": "biome format --write extensions",
+    "lint": "biome lint extensions",
+    "check": "biome check extensions"
+  },
   "pi": {
     "extensions": [
       "./extensions"
@@ -18,5 +23,8 @@
   },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.4"
   }
 }
