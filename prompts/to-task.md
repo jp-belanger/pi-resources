@@ -9,7 +9,7 @@ User-supplied task name: $ARGUMENTS
 
 Write the document to `docs/tasks/<task-name>.md` using this template:
 
-# Spec: <task name>
+# Task: <task name>
 
 ## Context
 Why this is needed. Current state, problem, constraints. 2-4 sentences.
