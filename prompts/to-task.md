@@ -7,7 +7,7 @@ Turn the current conversation context and codebase understanding into a task doc
 
 User-supplied task name: $ARGUMENTS
 
-Write the document to `docs/tasks/<task-name>.md` using this template:
+Write the document to `./<task-name>.md` using this template:
 
 # Task: <task name>
 
