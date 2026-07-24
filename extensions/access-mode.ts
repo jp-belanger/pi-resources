@@ -55,7 +55,7 @@ export default function accessModeExtension(pi: ExtensionAPI): void {
   }
 
   function updateStatus(ctx: ExtensionContext): void {
-    const label = mode === "read-only" ? "READ" : "EDIT";
+    const label = mode === "read-only" ? "PLAN" : "EXEC";
     const color = mode === "read-only" ? "accent" : "warning";
     ctx.ui.setStatus("access-mode", ctx.ui.theme.fg(color, label));
   }
