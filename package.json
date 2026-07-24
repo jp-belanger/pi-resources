@@ -1,5 +1,5 @@
 {
-  "name": "pi-config",
+  "name": "pi-resources",
   "version": "0.1.0",
   "private": true,
   "description": "Personal Pi extensions and prompt templates package.",
