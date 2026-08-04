@@ -12,7 +12,7 @@ infer a concise kebab-case name for the document. Write the it to `./<SPEC-NAME>
 What change we're making and why. Motivation (current behavior + what's wrong), and post-change behavior including edge cases. Note any invariants or compatibility constraints.
 
 ## System Architecture
-Abstactions, components, boundaries, interfaces, and stores the change touches, and the flow between them.
+Abstractions, components, boundaries, interfaces, and stores the change touches, and the flow between them.
 
 ## Program Design
 Key new/changed types and signatures, a call-stack tree (diff syntax for what changes), and a file-tree diff. Prefer pseudocode over prose.
