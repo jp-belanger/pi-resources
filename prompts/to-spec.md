@@ -1,13 +1,10 @@
 ---
 description: Turn the current conversation into a spec document
-argument-hint: "[spec-name]"
 ---
 
-Turn the current conversation context and codebase understanding into a spec document. Use the spec name supplied by the user, if any; otherwise infer a concise kebab-case name.
+Turn the current conversation context and codebase understanding into a spec document.
 
-User-supplied spec name: $ARGUMENTS
-
-Write the document to `./<SPEC-NAME>.md` using this template:
+infer a concise kebab-case name for the document. Write the it to `./<SPEC-NAME>.md` using this template:
 
 # spec: <spec name>
 
