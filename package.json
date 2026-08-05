@@ -9,13 +9,17 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
-    "format": "biome format --write extensions",
-    "lint": "biome lint extensions",
-    "check": "biome check extensions"
+    "format": "biome format --write extensions tests",
+    "lint": "biome lint extensions tests",
+    "test": "node --test tests/*.test.ts",
+    "check": "biome check extensions tests && pnpm run test"
   },
   "pi": {
     "extensions": [
       "./extensions"
+    ],
+    "skills": [
+      "./skills"
     ],
     "prompts": [
       "./prompts"

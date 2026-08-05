@@ -2,35 +2,14 @@
 
 Personal Pi package for extensions and prompt templates.
 
-## Install
+## Extensions
 
-```bash
-pi install git:git@github.com:jp-belanger/pi-resources.git
-```
+- `access-mode.ts` — toggles between read-only planning and edit modes.
+- `tmux-agent-status.ts` — publishes the agent state to the active tmux pane.
+- `uv-guard.ts` — blocks direct Python tooling in bash calls unless it runs through `uv`.
 
-For local development from this checkout:
+## Skills
 
-```bash
-cd ~/src/pi-resources
-pi install "$(pwd)"
-```
-
-## Reload changes
-
-After changing extensions or prompt templates, reload Pi:
-
-```text
-/reload
-```
-
-## Update
-
-```bash
-pi update --extensions
-```
-
-## Remove
-
-```bash
-pi remove git:git@github.com:jp-belanger/pi-resources.git
-```
+- `ruff` — linting and formatting Python code with Ruff.
+- `ty` — type checking Python code with ty.
+- `uv` — managing Python projects, scripts, packages, and tools with uv.
