@@ -7,6 +7,7 @@ Personal Pi package for extensions and prompt templates.
 - `access-mode.ts` — toggles between read-only planning and edit modes.
 - `tmux-agent-status.ts` — publishes the agent state to the active tmux pane.
 - `uv-guard.ts` — blocks direct Python tooling in bash calls unless it runs through `uv`.
+- `microsandbox/` — routes built-in file and shell tools through a local Microsandbox microVM. See [`extensions/microsandbox/README.md`](extensions/microsandbox/README.md).
 
 ## Skills
 

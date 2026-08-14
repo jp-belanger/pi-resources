@@ -1,7 +1,13 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.5.4/schema.json",
   "files": {
-    "includes": ["extensions/**/*.ts", "tests/**/*.ts"]
+    "includes": [
+      "extensions/**/*.ts",
+      "tests/**/*.ts",
+      "biome.json",
+      "package.json",
+      "tsconfig.json"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -11,7 +17,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "preset": "recommended"
     }
   }
 }

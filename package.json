@@ -8,11 +8,16 @@
   ],
   "license": "UNLICENSED",
   "type": "module",
+  "engines": {
+    "node": ">=26.5.1"
+  },
   "scripts": {
-    "format": "biome format --write extensions tests",
-    "lint": "biome lint extensions tests",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
     "test": "node --test tests/*.test.ts",
-    "check": "biome check extensions tests && pnpm run test"
+    "typecheck": "tsc --noEmit",
+    "check:shell": "bash -n extensions/microsandbox/*.sh",
+    "check": "biome check . && pnpm run typecheck && pnpm run check:shell && pnpm run test"
   },
   "pi": {
     "extensions": [
@@ -29,6 +34,12 @@
     "@earendil-works/pi-coding-agent": "*"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.4"
+    "@biomejs/biome": "^2.5.4",
+    "@earendil-works/pi-coding-agent": "*",
+    "@types/node": "^26.2.0",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "microsandbox": "0.6.8"
   }
 }
