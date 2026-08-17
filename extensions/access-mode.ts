@@ -87,13 +87,10 @@ export default function accessModeExtension(pi: ExtensionAPI): void {
   }
 
   for (const key of readToggleKeys()) {
-    pi.registerShortcut(
-      key as Parameters<ExtensionAPI["registerShortcut"]>[0],
-      {
-        description: `Toggle access mode (${KEYBINDING_ID})`,
-        handler: (ctx) => toggleMode(ctx),
-      },
-    );
+    pi.registerShortcut(key, {
+      description: `Toggle access mode (${KEYBINDING_ID})`,
+      handler: (ctx) => toggleMode(ctx),
+    });
   }
 
   pi.on("session_start", async (_event, ctx) => {
