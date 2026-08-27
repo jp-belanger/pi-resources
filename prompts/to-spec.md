@@ -17,9 +17,6 @@ Abstractions, components, boundaries, interfaces, and stores the change touches,
 ## Program Design
 Key new/changed types and signatures, a call-stack tree (diff syntax for what changes), and a file-tree diff. Prefer pseudocode over prose.
 
-## Vertical slices
-Thin end-to-end slices ("tracer bullets"), each independently runnable and reviewable (~100-200 lines).
-
 ## Verification
 How we'll know it works: tests to add, manual checks, success criteria.
 
@@ -28,3 +25,6 @@ Trade-offs accepted, backwards-compatibility impact, migration needs.
 
 ## Open questions
 Anything unresolved, if any.
+
+## Implementation
+List major steps. Prefer thin end-to-end slices ("tracer bullets"), each independently runnable and reviewable (~100-200 lines).

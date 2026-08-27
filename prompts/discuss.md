@@ -11,10 +11,17 @@ Before asking questions, inspect the relevant codebase, documentation, or files 
 
 Proceed in short rounds:
 
-- Identify the next unresolved decision, assumption, dependency, or risk.
-- Ask at most three focused questions at a time.
+- Identify the next most important unresolved decision, assumption, dependency, or risk.
 - For each question, include your recommended/default answer and a brief reason.
 - Wait for my response before continuing.
+
+Format your question using this template:
+
+```
+**Q1** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
+
+**Rec**: <your recommended answer>
+```
 
 Resolve prerequisite decisions before dependent ones. Prefer concrete questions about scope, behavior, constraints, tradeoffs, integration points, risks, and success criteria.
 

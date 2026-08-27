@@ -18,7 +18,7 @@ Additional guidance, files, or globs provided by the user: $ARGUMENTS
 
 - Body is OPTIONAL. If needed, add a blank line after the subject and write concise paragraphs. It should fill in the details and include any supplemental information a reader needs to understand the changelist holistically.
 - Only commit; do NOT push.
-- If it is unclear whether a file should be included, ask the user which files to commit.
+- If it is unclear whether a file should be included, ask the user which files to commit. Never commit dotfiles unless explicitly directed.
 - Treat user-provided arguments as additional commit guidance. Common patterns:
   - Freeform instructions should influence scope, summary, and body.
   - File paths or globs should limit which files to commit. If files are specified, only stage/commit those unless the user explicitly asks otherwise.
