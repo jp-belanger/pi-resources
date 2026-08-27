@@ -9,11 +9,17 @@ Initial topic or guidance provided by the user: $ARGUMENTS
 
 Before asking questions, inspect the relevant codebase, documentation, or files when available. Do not ask questions that can be answered by looking at the project.
 
-Proceed in short rounds:
+Treat planning as an evolving DAG of decisions, assumptions, dependencies, and risks. An edge means that one node must be resolved before another.
 
-- Identify the next most important unresolved decision, assumption, dependency, or risk.
+Proceed in rounds:
+
+- Identify the complete set of unresolved nodes that currently block progress and have no unresolved prerequisites.
+- Ask all questions for that set in the current round.
 - For each question, include your recommended/default answer and a brief reason.
 - Wait for my response before continuing.
+- After each response, reconsider the plan as a whole and update the DAG. Add, remove, or change nodes and dependencies before selecting the next round.
+
+Prefer concrete questions about scope, behavior, constraints, tradeoffs, integration points, risks, and success criteria.
 
 Format your question using this template:
 
@@ -22,8 +28,6 @@ Format your question using this template:
 
 **Rec**: <your recommended answer>
 ```
-
-Resolve prerequisite decisions before dependent ones. Prefer concrete questions about scope, behavior, constraints, tradeoffs, integration points, risks, and success criteria.
 
 Continue until the plan is clear enough to implement. Then summarize:
 
