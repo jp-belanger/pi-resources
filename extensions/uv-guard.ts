@@ -8,7 +8,7 @@ const PYTHON_COMMAND_CANDIDATE =
 const ASSIGNMENT = /^[A-Za-z_][A-Za-z0-9_]*=/;
 const NO_OPTIONS_WITH_VALUES = new Set<string>();
 const DENIAL_REASON =
-  "Python commands must be run through uv. Use `uv run` instead. Consult the uv skill for workflow guidance. Do not retry this command outside uv.";
+  "Python commands must be run through uv. Use `uv run` instead. Do not retry this command outside uv.";
 
 const ENV_OPTIONS_WITH_VALUES = new Set([
   "-C",
