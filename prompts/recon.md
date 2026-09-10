@@ -15,6 +15,6 @@ Prioritize relevant:
 - Invariants, assumptions, and side effects.
 - Tests, configuration, and integration points.
 
-Cite key files and symbols. Distinguish confirmed behavior from inference, and note important unknowns. Avoid exhaustive file summaries and do not modify the codebase.
+Distinguish confirmed behavior from inference, and note important unknowns. Avoid exhaustive file summaries and do not modify the codebase.
 
-Return a compact reconnaissance brief with the system overview, key abstractions, execution paths, invariants, risks, and high-value files.
+Return a compact reconnaissance brief with the system overview, key abstractions, execution paths, invariants, and risks.
