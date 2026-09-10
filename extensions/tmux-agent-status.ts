@@ -1,38 +1,16 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
-const PERMISSION_EVENT_CHANNEL = "pi-permission-system:permission-request";
 const PANE_STATE_OPTION = "@pi_agent_state";
 
 type AgentBaseState = "waiting" | "working";
 type AgentState = AgentBaseState | "blocked";
-type PermissionRequestState = "waiting" | "approved" | "denied";
-
-interface PermissionRequestEvent {
-  requestId: string;
-  state: PermissionRequestState;
-}
-
-function isPermissionRequestEvent(
-  value: unknown,
-): value is PermissionRequestEvent {
-  if (typeof value !== "object" || value === null) return false;
-
-  const event = value as Record<string, unknown>;
-  return (
-    typeof event.requestId === "string" &&
-    (event.state === "waiting" ||
-      event.state === "approved" ||
-      event.state === "denied")
-  );
-}
 
 export default function tmuxAgentStatusExtension(pi: ExtensionAPI): void {
   const paneId = process.env.TMUX_PANE;
   let enabled = false;
   let baseState: AgentBaseState = "waiting";
-  const pendingPermissionRequests = new Set<string>();
+  let waitingForUser = false;
   let tmuxUpdateQueue = Promise.resolve();
-  let unsubscribePermissionEvents: (() => void) | undefined;
 
   async function runTmux(args: string[]): Promise<boolean> {
     try {
@@ -74,36 +52,16 @@ export default function tmuxAgentStatusExtension(pi: ExtensionAPI): void {
   }
 
   function publishCurrentState(): Promise<void> {
-    return enqueueTmuxUpdate(
-      pendingPermissionRequests.size > 0 ? "blocked" : baseState,
-    );
-  }
-
-  function handlePermissionEvent(data: unknown): void {
-    if (!enabled || !isPermissionRequestEvent(data)) return;
-
-    if (data.state === "waiting") {
-      pendingPermissionRequests.add(data.requestId);
-    } else {
-      pendingPermissionRequests.delete(data.requestId);
-    }
-
-    void publishCurrentState();
+    return enqueueTmuxUpdate(waitingForUser ? "blocked" : baseState);
   }
 
   pi.on("session_start", async (_event, ctx) => {
     enabled = ctx.mode === "tui" && Boolean(paneId);
     baseState = "waiting";
-    pendingPermissionRequests.clear();
-    unsubscribePermissionEvents?.();
-    unsubscribePermissionEvents = undefined;
+    waitingForUser = false;
 
     if (!enabled) return;
 
-    unsubscribePermissionEvents = pi.events.on(
-      PERMISSION_EVENT_CHANNEL,
-      handlePermissionEvent,
-    );
     await publishCurrentState();
   });
 
@@ -119,14 +77,23 @@ export default function tmuxAgentStatusExtension(pi: ExtensionAPI): void {
     await publishCurrentState();
   });
 
-  pi.on("session_shutdown", async () => {
-    unsubscribePermissionEvents?.();
-    unsubscribePermissionEvents = undefined;
+  pi.on("ui_prompt_start", async () => {
+    if (!enabled) return;
+    waitingForUser = true;
+    await publishCurrentState();
+  });
 
+  pi.on("ui_prompt_end", async () => {
+    if (!enabled) return;
+    waitingForUser = false;
+    await publishCurrentState();
+  });
+
+  pi.on("session_shutdown", async () => {
     if (!enabled) return;
 
     enabled = false;
-    pendingPermissionRequests.clear();
+    waitingForUser = false;
     await enqueueTmuxUpdate(undefined);
   });
 }
