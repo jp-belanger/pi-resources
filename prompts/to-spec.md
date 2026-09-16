@@ -4,7 +4,7 @@ description: Turn the current conversation into a spec document
 
 Turn the current conversation context and codebase understanding into a spec document.
 
-infer a concise kebab-case name for the document. Write the it to `./<SPEC-NAME>.md` using this template:
+Infer a concise kebab-case name for the document. Write the it to `docs/spec/<SPEC-NAME>.md` using this template:
 
 # spec: <spec name>
 
@@ -27,4 +27,4 @@ Trade-offs accepted, backwards-compatibility impact, migration needs.
 Anything unresolved, if any.
 
 ## Implementation
-List major steps. Prefer thin end-to-end slices ("tracer bullets"), each independently runnable and reviewable (~100-200 lines).
+List major steps. Prefer thin end-to-end slices ("tracer bullets"), each independently runnable and reviewable (~100-200 lines). Include a checkbox for each top level step.
