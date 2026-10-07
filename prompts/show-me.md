@@ -25,15 +25,6 @@ submitForm
   navigateToSession
 ```
 
-- Show UI structure as a component tree, including state and module boundaries that matter:
-
-```tsx
-<SessionPage> (apps/example/src/routes/session.tsx)
-  useSessionEvents()
-  <SessionToolbar>
-    <RunSkillButton> (packages/ui)
-```
-
 - Show file responsibility or a broad refactor as a shallow file tree:
 
 ```text
@@ -113,8 +104,6 @@ function expandSkill(command: string): string {
   return `use the ${skillName} skill`
 }
 ```
-
-- For a visual UI, layout, state comparison, or concept too dense for Mermaid, write one focused HTML file — a diagram, an infographic, or a short slide deck, whichever fits the point. Match the product's colors, type, spacing, and components; use real labels and data; support desktop and mobile.
 
 ### guidance
 
