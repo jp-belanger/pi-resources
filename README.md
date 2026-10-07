@@ -5,7 +5,7 @@ Personal Pi package for extensions, skills, and prompt templates.
 ## Extensions
 
 - `access-mode.ts` — toggles between read-only planning and edit modes.
-- `tmux-agent-status.ts` — publishes waiting, working, and blocked states to the active tmux pane.
+- `tmux-agent-status.ts` — publishes waiting, working, and blocked states to the active tmux pane; rings the terminal bell when a run finishes (unless cancelled) or an input dialog opens, allowing Ghostty to request Sway workspace attention.
 - `uv-guard.ts` — blocks direct Python tooling in bash calls unless it runs through `uv`.
 
 ## Skills

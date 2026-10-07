@@ -5,6 +5,7 @@ const PANE_STATE_OPTION = "@pi_agent_state";
 type AgentBaseState = "waiting" | "working";
 type AgentState = AgentBaseState | "blocked";
 
+/** Publishes tmux agent status and rings the terminal bell when Pi needs attention. */
 export default function tmuxAgentStatusExtension(pi: ExtensionAPI): void {
   const paneId = process.env.TMUX_PANE;
   let enabled = false;
@@ -55,6 +56,11 @@ export default function tmuxAgentStatusExtension(pi: ExtensionAPI): void {
     return enqueueTmuxUpdate(waitingForUser ? "blocked" : baseState);
   }
 
+  function ringTerminalBell(): void {
+    // tmux forwards BEL to attached terminals; Ghostty requests window attention.
+    process.stdout.write("\x07");
+  }
+
   pi.on("session_start", async (_event, ctx) => {
     enabled = ctx.mode === "tui" && Boolean(paneId);
     baseState = "waiting";
@@ -71,14 +77,16 @@ export default function tmuxAgentStatusExtension(pi: ExtensionAPI): void {
     await publishCurrentState();
   });
 
-  pi.on("agent_settled", async () => {
+  pi.on("agent_settled", async (event) => {
     if (!enabled) return;
+    if (baseState === "working" && !event.aborted) ringTerminalBell();
     baseState = "waiting";
     await publishCurrentState();
   });
 
   pi.on("ui_prompt_start", async () => {
     if (!enabled) return;
+    if (!waitingForUser) ringTerminalBell();
     waitingForUser = true;
     await publishCurrentState();
   });
