@@ -71,6 +71,7 @@ Upstream provenance and local adaptations are recorded in
 ## Skills
 
 - `readable-tests` — language-independent expect testing for results, events, state, wire output, and diagnostics, demonstrated with Rust examples.
+- `show-me` — explains topics with focused diagrams and code-shape sketches; explicit invocation only via `/skill:show-me` (automatic model invocation is disabled).
 - `write-discoverable-code` — naming and organization conventions that make code easy to find through plain-text search.
 
 ## Prompt templates
@@ -79,5 +80,4 @@ Upstream provenance and local adaptations are recorded in
 - `/discuss` — turns a rough idea into a clear plan through an interview.
 - `/handoff` — summarizes the current conversation for another agent.
 - `/recon` — builds relevant codebase context for the work ahead.
-- `/show-me` — explains the current topic with focused visual artifacts.
 - `/to-spec` — turns the current conversation into a specification.
