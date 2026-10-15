@@ -69,7 +69,10 @@ Upstream provenance and local adaptations are recorded in
 
 ## Skills
 
-- `readable-tests` — language-independent expect testing for results, events, state, wire output, and diagnostics, demonstrated with Rust examples.
+- `how` — explains subsystem architecture and runtime behavior with parallel exploration where useful. Invoke with `/skill:how`.
+- `why` — investigates design rationale across available evidence sources, separating findings, inference, and gaps. Invoke with `/skill:why`.
+- `engineering-principles` — selects relevant principles from 17 bundled references and requires replies to cite the principles that shaped concrete decisions; loads only the applicable references.
+- `technical-writing` — automatically applicable writing standards for all prose, including responses and progress updates. Invoke explicitly with `/skill:technical-writing`.
 - `show-me` — explains topics with focused diagrams and code-shape sketches; explicit invocation only via `/skill:show-me` (automatic model invocation is disabled).
 - `write-discoverable-code` — naming and organization conventions that make code easy to find through plain-text search.
 
@@ -78,5 +81,4 @@ Upstream provenance and local adaptations are recorded in
 - `/commit` — creates a high-quality source commit.
 - `/discuss` — turns a rough idea into a clear plan through an interview.
 - `/handoff` — summarizes the current conversation for another agent.
-- `/recon` — builds relevant codebase context for the work ahead.
 - `/to-spec` — turns the current conversation into a specification.
