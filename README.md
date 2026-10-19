@@ -69,10 +69,6 @@ Upstream provenance and local adaptations are recorded in
 
 ## Skills
 
-- `how` — explains subsystem architecture and runtime behavior with parallel exploration where useful. Invoke with `/skill:how`.
-- `why` — investigates design rationale across available evidence sources, separating findings, inference, and gaps. Invoke with `/skill:why`.
-- `engineering-principles` — selects relevant principles from 17 bundled references and requires replies to cite the principles that shaped concrete decisions; loads only the applicable references.
-- `technical-writing` — automatically applicable writing standards for all prose, including responses and progress updates. Invoke explicitly with `/skill:technical-writing`.
 - `show-me` — explains topics with focused diagrams and code-shape sketches; explicit invocation only via `/skill:show-me` (automatic model invocation is disabled).
 - `write-discoverable-code` — naming and organization conventions that make code easy to find through plain-text search.
 
