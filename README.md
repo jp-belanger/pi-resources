@@ -76,5 +76,3 @@ Upstream provenance and local adaptations are recorded in
 
 - `/commit` — creates a high-quality source commit.
 - `/discuss` — turns a rough idea into a clear plan through an interview.
-- `/handoff` — summarizes the current conversation for another agent.
-- `/to-spec` — turns the current conversation into a specification.
