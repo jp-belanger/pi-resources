@@ -69,6 +69,7 @@ Upstream provenance and local adaptations are recorded in
 
 ## Skills
 
+- `engineering` — general engineering discipline: understand the domain, model invariants, design from the caller's side, and make the smallest coherent change. Available automatically for engineering tasks or explicitly via `/skill:engineering`.
 - `show-me` — explains topics with focused diagrams and code-shape sketches; explicit invocation only via `/skill:show-me` (automatic model invocation is disabled).
 - `write-discoverable-code` — naming and organization conventions that make code easy to find through plain-text search.
 
