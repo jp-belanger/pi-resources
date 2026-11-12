@@ -1,77 +1,33 @@
 # pi-resources
 
-Personal Pi package for extensions, skills, and prompt templates.
+A personal Pi package with extensions, skills, and prompt templates.
+Extensions add tools and terminal features. Skills guide the model's work.
+Prompt templates define reusable tasks.
 
 ## Extensions
 
-- `subagent.ts` — native tools for parallel, persistent Pi workers in tmux (see below).
-- `tmux-agent-status.ts` — publishes waiting, working, and blocked states to the active tmux pane; rings the terminal bell when a run finishes (unless cancelled) or an input dialog opens, allowing Ghostty to request Sway workspace attention.
+The extension documents contain requirements, usage instructions, and limits.
 
-## Persistent subagents
-
-Requires Pi and `tmux` on `PATH`; no separate subagent CLI or external package
-installation is needed. The parent model receives these native tools:
-
-- `subagent_spawn`: takes `task` and optional `name`, `cwd`, `provider`, `model`,
-  and `thinking`; returns a stable handle immediately. Workers run independently
-  in parallel rather than serializing delegated tasks.
-- `subagent_send`: takes `handle`, `message`, and optional `delivery` (`steer` by
-  default, or `followUp`). Reuses the worker's conversation context.
-- `subagent_wait`: takes `handle` and optional `timeout` in seconds (default
-  1800); returns the settled answer from durable Pi JSONL. Cancellation and
-  timeout do **not** kill the worker. Pending messages prevent stale answers.
-- `subagent_status`, `subagent_list`, `subagent_rename`: inspect the current
-  parent's workers or change a display name without changing its handle.
-- `subagent_stop`: retains history and prevents automatic resume. Optional
-  `purge: true` permanently deletes the worker's history.
-
-Use `/subagent` to pick and attach to an active worker, or run
-`pi --attach-subagent <handle>` in another terminal. Legacy UUID attach targets
-still work. All operations use `getAgentDir()/tmux-subagents.sock`; attachment
-switches clients on the same socket and clears tmux nesting variables when
-attaching across servers. The picker suspends the parent terminal UI while an
-attached child owns the terminal. The parent TUI shows names and states for up to
-five active workers (plus an overflow count); no widget runs in RPC/print mode.
-
-Workers survive `/reload`. Parent quit or session replacement suspends them,
-keeping history; resuming the parent relaunches suspended workers idle. In-flight
-work is interrupted, not automatically replayed: send a new message to continue.
-Undelivered inbox messages are archived on suspension for inspection. Stopped
-workers are never automatically relaunched.
-
-Inbox files retain per-message dispatch markers across reload until a tagged user
-message appears on the child's session branch. Idle prompt starts are serialized;
-queued follow-ups do not block steering active work. A small `[subagent inbox: …]`
-tag is included in delivered prompts for unambiguous acknowledgement. Delivery is
-not exactly-once: if preflight fails, an input extension consumes/removes the tag,
-or reload loses a queued prompt, the request stays pending rather than replaying
-or exposing an old answer. After 30 seconds while idle with no Pi queue, status
-reports an unconfirmed-delivery error. Inspect the attached child and retained
-inbox, then stop and spawn a replacement worker; there is no automatic retry.
-Long-running queued work is not subject to this idle timeout.
-
-Each worker uses a dedicated JSONL session under
-`getAgentDir()/persistent-subagents/<handle>/`, separate from old
-`tmux-subagents` artifacts. Tool output is capped at 50KB/2000 lines and includes
-the full session path. Management tools are scoped to the current parent session.
-Managed children block `/new`, `/resume`, and `/fork` to preserve that dedicated
-transcript; `/tree` remains available.
-
-Children load normal extensions, skills, and project resources alongside an
-explicit control bridge, but do not receive subagent management tools. There are
-no tool restriction or isolation options: configured permissions govern access.
-Trusted same/descendant working directories use `--approve`; others use
-`--no-approve`. That choice and `PI_SUBAGENT_PARENT_SESSION` are preserved on
-resume, without importing any particular permission package.
+| Extension | Purpose | Source |
+| --- | --- | --- |
+| [Subagent](extensions/subagent/README.md) | Runs persistent Pi workers in parallel through tmux. | [`subagent.ts`](extensions/subagent.ts) |
+| [tmux agent status](extensions/tmux-agent-status.ts) | Reports agent state to tmux and sends terminal bell notifications. | [`tmux-agent-status.ts`](extensions/tmux-agent-status.ts) |
 
 ## Skills
 
-- `domain-modeling` — sharpens domain terminology, maintains glossaries, and records architectural decisions. Available automatically for domain-modeling tasks or explicitly via `/skill:domain-modeling`.
-- `engineering` — general engineering discipline: understand the domain, model invariants, design from the caller's side, and make the smallest coherent change. Available automatically for engineering tasks or explicitly via `/skill:engineering`.
-- `show-me` — explains topics with focused diagrams and code-shape sketches; explicit invocation only via `/skill:show-me` (automatic model invocation is disabled).
-- `write-discoverable-code` — naming and organization conventions that make code easy to find through plain-text search.
+Each skill file defines its scope and instructions.
+
+| Skill | Purpose |
+| --- | --- |
+| [domain-modeling](skills/domain-modeling/SKILL.md) | Defines domain terms, maintains glossaries, and records architecture decisions. |
+| [engineering](skills/engineering/SKILL.md) | Guides software design, implementation, and verification. |
+| [show-me](skills/show-me/SKILL.md) | Explains topics with diagrams, code examples, and HTML documents. |
+| [write-discoverable-code](skills/write-discoverable-code/SKILL.md) | Defines naming and organization rules that help readers find code through text search. |
 
 ## Prompt templates
 
-- `/commit` — creates a high-quality source commit.
-- `/discuss` — turns a rough idea into a clear plan through an interview.
+| Template | Purpose |
+| --- | --- |
+| [/commit](prompts/commit.md) | Creates a Git commit for selected changes without pushing. |
+| [/discuss](prompts/discuss.md) | Turns an idea into a plan without implementation. |
+| [/say-again](prompts/say-again.md) | Restates the last response in plain language. |
