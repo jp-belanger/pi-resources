@@ -19,6 +19,7 @@ Each skill file defines its scope and instructions.
 
 | Skill | Purpose |
 | --- | --- |
+| [create-design-discussion](skills/create-design-discussion/SKILL.md) | Lays out a proposed architecture and open design questions, then resolves them with the user. |
 | [create-prd](skills/create-prd/SKILL.md) | Writes a product requirements document through a guided interview. |
 | [create-tdd](skills/create-tdd/SKILL.md) | Writes a technical design document through a guided interview. |
 | [domain-modeling](skills/domain-modeling/SKILL.md) | Defines domain terms, maintains glossaries, and records architecture decisions. |
