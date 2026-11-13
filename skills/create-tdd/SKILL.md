@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Create a Technical Design Document
 
-You are creating a Technical Design Document (TDD): the artifact that turns whatever product context exists into a technical design the team can build from. It answers HOW we build something - not WHAT or WHY. Leave product requirements and UX to the upstream product context.
+You are creating a Technical Design Document (TDD): the artifact that turns whatever product context exists into a technical design the team can build from. It answers HOW we build something - not WHAT or WHY. Leave product requirements to the upstream product context.
 
 You run the design as a guided conversation in **two ordered phases**:
 
@@ -42,15 +42,15 @@ There is no required upstream artifact. The product context might be a full PRD,
 - Ground the design in the inputs you *do* have, and cite them as you write: "Per the ticket...", "The research doc notes...", "As described in the PRD...".
 - Don't duplicate upstream content into the TDD - reference it.
 - If the product context is thin, don't invent requirements. Surface the gaps as questions during the interview and let the user fill them in.
-- The TDD answers HOW to build what those inputs describe. If a technical decision changes product scope or UX, call it out for the user (and update the PRD if one exists).
+- The TDD answers HOW to build what those inputs describe. If a technical decision changes product scope or user-visible behavior, call it out for the user (and update the PRD if one exists).
 
 ## 2. Write the skeleton
 
-Write the doc where the project keeps design docs. If it has no such place, write to `docs/tdd/{description}.md`, where `{description}` is a 2-4 word kebab-case slug. Create the directory lazily.
+Write the doc to `.tasks/{task}/tdd.md` at the project root. Create the directory lazily. `{task}` names the piece of work: if a PRD for this work already exists under `.tasks/`, reuse its folder. Otherwise use the ticket ID plus a short slug when there's a ticket (`eng-1234-artifact-sync`), or just the slug (`artifact-sync`). Use lowercase kebab-case.
 
 Use the template in [TDD-FORMAT.md](./TDD-FORMAT.md). **Keep the skeleton as minimal as possible. No preamble, no setup, no summaries.** The faster you reach the first question, the more the user stays engaged in building the TDD. Write only:
 
-- Frontmatter, plus the top-level title
+- The top-level title
 - Empty **System Design** and **Program Design** headers - built out through the two phases
 - **Patterns to Follow** header
 
@@ -145,7 +145,7 @@ Now design the in-code shape under the **Program Design** header.
 
 **Ask exactly one question per message, walking down each branch of the design tree.** Same rhythm as system design: resolve one decision, let it inform the next, re-work the section after each answer.
 
-**Almost every message should carry a code block.** Program design is a discussion about the shape of code, so visualize it richly rather than describing it in prose: show each option as a concrete code-shape sketch - a `diff`, a call-stack tree, a file-tree diff, a component tree, a type signature, or pseudocode. When you present 2-3 options, render each one as its own code block so the user compares the actual shapes side by side, not your description of them. A message that asks a program-design question with no code block should be the rare exception - if you catch yourself explaining a code change in words alone, convert it into one of the views before sending.
+**Almost every message should carry a code block.** Program design is a discussion about the shape of code, so visualize it richly rather than describing it in prose: show each option as a concrete code-shape sketch - a `diff`, a call-stack tree, a file-tree diff, a type signature, or pseudocode. When you present 2-3 options, render each one as its own code block so the user compares the actual shapes side by side, not your description of them. A message that asks a program-design question with no code block should be the rare exception - if you catch yourself explaining a code change in words alone, convert it into one of the views before sending.
 
 For each decision: present a single decision with options as concrete code-shape sketches and your recommendation -> work back and forth until the decision is resolved -> only then re-work the **Program Design** section so it absorbs the decision, keeping it one coherent description of the code shape. A resolved decision often updates the call tree or file shape you already started, so restructure and redraw those in place.
 
@@ -173,33 +173,13 @@ Use `diff` syntax only when it highlights changed/added/removed calls; if most o
 -    legacyCreateFlow
 ```
 
-**Frontend component tree** - UI changes. Show production components, their state/local data, and module/package boundaries (the example below is React/TSX - adapt to whatever UI framework the codebase uses).
-
-```tsx
-<ResourcePage> (apps/example/src/routes/resource.tsx)
-  useResourceActions()
-  <ResourceToolbar>
-    <CreateResourceDialog> (packages/ui)
-      useFormState()
-```
-
-Use `diff` syntax only when it highlights changed/added/removed components, props, or state.
-
-```diff
- <ResourcePage> (apps/example/src/routes/resource.tsx)
-   useResourceActions()
-+  useOptimisticResourceState()
-   <ResourceToolbar>
-+    <CreateResourceDialog> (packages/ui)
-```
-
 **File-tree diff** - broad refactors or when file responsibility is a design decision. Format like `tree` output so depth is easy to scan; keep it high-level.
 
 ```diff
  src
  └── resource
 +    ├── resource-client.ext      # NEW - wraps API contract calls
-~    └── resource-route.ext       # MODIFIED - wires create action into UI
+~    └── resource-command.ext     # MODIFIED - wires create command into CLI
 ```
 
 **Dependency-injection map** - the seams and injected dependencies that matter, grouped by the object/workflow that receives them. Explain what each dependency lets the code do; avoid raw constructor dumps.
@@ -210,9 +190,9 @@ createResourceWorkflow
   receives eventPublisher   -> emits resource-created events after commit
   receives clock            -> makes timestamps deterministic
 
-ResourcePage
-  receives createResource   -> UI does not know transport details
-  receives queryClient      -> updates cached resource list after success
+createResourceCommand
+  receives createResource   -> CLI does not know transport details
+  receives output           -> tests capture what the user sees
 ```
 
 **Internal method signatures** for key new functions not captured in system design (use the codebase's language):

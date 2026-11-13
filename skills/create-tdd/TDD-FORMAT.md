@@ -3,12 +3,6 @@
 ## Template
 
 ```md
----
-repo: [current repository]
-branch: [current branch name]
-sha: [result of git rev-parse HEAD]
----
-
 # [TDD Title]
 
 <!--
@@ -46,7 +40,7 @@ boundaries between components, right beside the prose they support.]
 
 [The in-code shape that implements the system. Break into "####" sub-sections with
 takeaway-style headers; under each, pick the views that clarify the change:
-call-stack trees, frontend component trees, file-tree diffs, dependency-injection maps,
+call-stack trees, file-tree diffs, dependency-injection maps,
 method signatures, and pseudocode not captured above. Place each
 view beside the prose it supports. Keep it selective and high-level - exhaustive file
 lists belong to the implementation plan.]
