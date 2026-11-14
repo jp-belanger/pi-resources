@@ -30,7 +30,7 @@ You run the PRD as a guided conversation. You settle the **foundation** - the pr
 
 ## 1. Understand the context
 
-Find the product context the user points to and read every relevant file **fully**.
+Find the product context the user points to (including any session guidance below) and read every relevant file **fully**.
 
 There is no required upstream artifact. The product context might be a detailed ticket, a research doc, or just a couple of sentences describing what the user wants. Work from whatever is present.
 
@@ -119,3 +119,7 @@ Wait for the user's approval and incorporate any fixes they raise.
 ## 6. Wrap up
 
 When the solution is approved, give the user the path to the PRD, a short summary of the product spec, and any open questions. Suggest the TDD as the next step, using the `create-tdd` skill. Do not implement.
+
+## Session guidance
+
+Any text below these instructions is the user's guidance for this session. Use it to choose the context you read, the task name, and the focus of the interview. Draft anything it already settles and confirm it rather than re-asking. Put what it rules out under **Out of Scope**. It changes what the session covers, not how it runs.

@@ -35,7 +35,7 @@ You fully settle and get the user's sign-off on the System Design before you ope
 
 ## 1. Understand the context
 
-Find the product context the user points to and read every relevant file **fully**.
+Find the product context the user points to (including any session guidance below) and read every relevant file **fully**.
 
 There is no required upstream artifact. The product context might be a full PRD, or just a ticket plus a research doc, or only a couple of sentences describing what the user wants. Work from whatever is present - **a PRD is not required.**
 
@@ -226,3 +226,7 @@ Wait for the user's approval and incorporate any fixes.
 ## 7. Wrap up
 
 When both phases are approved, give the user the path to the TDD, a short summary of the design, and any open questions. Do not implement.
+
+## Session guidance
+
+Any text below these instructions is the user's guidance for this session. Use it to choose the context you read, the task name, and the focus of the interview. Treat its constraints as settled decisions: draft them and confirm rather than re-asking. It changes what the session covers, not how it runs.
