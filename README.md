@@ -25,6 +25,7 @@ Each skill file defines its scope and instructions.
 | [create-tdd](skills/create-tdd/SKILL.md) | Writes a technical design document through a guided interview. |
 | [domain-modeling](skills/domain-modeling/SKILL.md) | Defines domain terms, maintains glossaries, and records architecture decisions. |
 | [engineering](skills/engineering/SKILL.md) | Guides software design, implementation, and verification. |
+| [implement-outline](skills/implement-outline/SKILL.md) | Implements a structure outline phase by phase through workers, with a review and commit between phases. |
 | [show-me](skills/show-me/SKILL.md) | Explains topics with diagrams, code examples, and HTML documents. |
 | [write-discoverable-code](skills/write-discoverable-code/SKILL.md) | Defines naming and organization rules that help readers find code through text search. |
 
