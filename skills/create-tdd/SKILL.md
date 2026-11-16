@@ -225,7 +225,7 @@ Wait for the user's approval and incorporate any fixes.
 
 ## 7. Wrap up
 
-When both phases are approved, give the user the path to the TDD, a short summary of the design, and any open questions. Do not implement.
+When both phases are approved, give the user the path to the TDD, a short summary of the design, and any open questions. Suggest the structure outline as the next step, using the `create-structure-outline` skill. Do not implement.
 
 ## Session guidance
 
