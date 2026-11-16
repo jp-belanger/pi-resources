@@ -41,6 +41,8 @@ rules make code resolvable in one search instead of five.
 - **When behavior or audience changes, rename in the same commit.** A stale name is
   misinformation with a 100% open rate — that includes visibility markers: a `_private`
   helper that other modules now import needs a public name.
+- **No whimsical codenames for concepts.** A codename never matches a search for what
+  the code does. Name the concept, not the project mascot.
 - **Filenames are names too — never use bare-role filenames.** `config.ts`, `types.ts`,
   `utils.ts`, `helpers.ts`, `handlers.ts` say nothing in a search result and collide with
   every other module's config/types/utils in the repo. Prefix the domain:
@@ -66,6 +68,10 @@ rules make code resolvable in one search instead of five.
 - **One-line doc comment on every export**, stating the sharpest constraint the code
   itself can't show (units, timezone, "source time, not insert time", ownership).
   The definition is where a name search lands; that line is your whole message.
+- **When two similar APIs exist, the doc comment says which to use when.** Self-documenting
+  code fails at "which should I use?"; answer it at both definitions.
+- **Prefer compiled or executable doc examples** (doctests, type-checked snippets) so API
+  changes break stale docs instead of leaving them to mislead.
 - **Write the plain-words phrase in the doc comment.** Searches arrive as natural language
   ("rate limit", "retry delay"), and camelCase identifiers don't match phrase greps —
   `RateLimiter` is invisible to a search for "rate limit". The doc comment above each
@@ -105,3 +111,4 @@ rules make code resolvable in one search instead of five.
 4. Do all log/error strings exist verbatim in the source?
 5. Did anything change behavior without changing its name?
 6. When code moved, is it gone from where it came from?
+7. Does any new type let two meanings collapse into one value (null vs missing)?
