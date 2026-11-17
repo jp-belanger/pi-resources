@@ -83,7 +83,7 @@ You are creating a structure outline: the phased implementation plan that turns 
    - `{task}` is the ticket ID plus a short slug when there's a ticket, otherwise just the slug, in lowercase kebab-case:
      - With ticket: `.tasks/eng-1478-parent-child-tracking/structure-outline.md`
      - Without ticket: `.tasks/improve-error-handling/structure-outline.md`
-   - Fill in **Implementation Overview** with an unchecked box for every phase title (`- [ ] Phase N: [Title]`). The `implement-outline` skill checks them off and marks phase headings with ✅ as phases complete.
+   - Fill in **Implementation Overview** with an unchecked box for every phase title (`- [ ] Phase N: [Title]`). The `implement-outline` skill checks them off and prefixes phase headings with `[DONE]` as phases complete.
 
 9. **Respond** with the path to the structure outline, the Implementation Overview checklist, and any open questions, each with your recommendation. Once no open questions remain, suggest implementing it with the `implement-outline` skill. Do not include a summary or other information.
 

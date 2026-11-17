@@ -33,7 +33,7 @@ The outline records progress, so a later session can resume from it:
 | --- | --- | --- |
 | `- [x]` under **Automated Verification** | Worker | The check passes |
 | `- [x]` under **Manual Verification** | You | The user confirms the check |
-| `### ✅ Phase N: Title` and `- [x] Phase N: Title` in **Implementation Overview** | You | The user approves the phase |
+| `### [DONE] Phase N: Title` and `- [x] Phase N: Title` in **Implementation Overview** | You | The user approves the phase |
 
 ## Phase loop
 
@@ -91,7 +91,7 @@ Ready for Phase [N+1] once you confirm, or tell me what needs adjusting.
 Wait for the user to confirm the manual checks, report problems, or approve the phase.
 
 - Send fixes to the same worker with `subagent_send`, review its result again (step 2), and report again.
-- When the user approves, check off the confirmed Manual Verification items, mark the phase heading with ✅, and check the phase in **Implementation Overview**.
+- When the user approves, check off the confirmed Manual Verification items, prefix the phase heading with `[DONE]`, and check the phase in **Implementation Overview**.
 
 ### 5. Commit the phase
 
@@ -110,9 +110,9 @@ Start the next phase only when the user tells you to.
 
 When an outline is partly implemented:
 
-- A phase with ✅ in its heading is done. Trust it unless something looks wrong.
+- A phase with `[DONE]` in its heading is done. Trust it unless something looks wrong.
 - Checked boxes inside an unfinished phase show partial progress. Read the working tree and `git log` to see what is already in place, and tell the worker which parts are done.
-- Start from the first phase without ✅.
+- Start from the first phase without `[DONE]`.
 
 ### Implementing several phases in a row
 
@@ -133,7 +133,7 @@ When every phase is approved and committed, respond with this, and nothing else:
 ```md
 ### Status
 
-- Implementation complete: all phases in `.tasks/{task}/structure-outline.md` are marked ✅
+- Implementation complete: all phases in `.tasks/{task}/structure-outline.md` are marked `[DONE]`
 - Ticket: [ticket ID, or omit this line when there's no ticket]
 
 ### Commits
