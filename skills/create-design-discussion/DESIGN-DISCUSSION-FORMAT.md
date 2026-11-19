@@ -7,7 +7,7 @@
 
 ### Summary of change request
 
-[summary of what the user wants to build based on their request and the ticket]
+[summary of what the user wants to build, based on their request]
 
 ### Current State
 
@@ -23,26 +23,30 @@
 
 ### What we're not doing
 
-- [things that are out of scope]
+- [things that are out of scope, including options ruled out by decisions]
 - ..
 
-### Proposed End State Architecture
+### Proposed Architecture
 
-[concise outline of the proposed end state architecture with description, diagrams, pseudocode, etc according to show-me]
+[In the first draft: today's shape of the part of the system the change touches.
+As decisions are resolved: the target shape those decisions support, and nothing more.
+Use component-level views according to show-me: Mermaid diagrams of which components
+are involved and how they connect, shallow file trees showing where the change lives,
+and before-and-after `diff` views of either.]
 
 ### Design Questions
 
 #### [title first question]
 
-[the design question]
+[the design question and why it matters]
 
 - Option A: ...
-[optional: short code snippet, mermaid diagram, pseudocode, etc]
+[optional: component diagram or shallow file tree]
 - Option B: ...
-[optional: short code snippet, mermaid diagram, pseudocode, etc]
+[optional: component diagram or shallow file tree]
 - ..
 
-Recommendation: [....]
+Recommendation: [option] - [reason]
 
 #### [title second design question]
 
@@ -53,7 +57,7 @@ Recommendation: [....]
 
 #### [title resolved question]
 
-[option chosen] - [rationale] - [pattern to follow or pseudocode, mermaid diagram, etc]
+[option chosen] - [rationale]
 
 [brief summary of options not chosen with rationale]
 
@@ -63,11 +67,21 @@ Recommendation: [....]
 ...
 
 
+### Deferred to PRD
+
+- [product behavior question within the chosen direction - the behavior, interfaces, and guarantees that users, operators, and callers rely on, or how success is measured]
+- ..
+
+### Deferred to TDD
+
+- [system or program design question within the chosen direction - how components interact and the contracts between them, or the shape of the code inside one]
+- ..
+
 ### Patterns to follow
 
-These show the patterns found in the existing codebase that will be followed to implement the proposed end state architecture.
+These show the patterns found in the existing codebase that the implementation will follow.
 
-#### [title First pattern from research]
+#### [title first pattern]
 
 [summary of the pattern] - e.g. [path/to/file]
 
@@ -75,11 +89,7 @@ These show the patterns found in the existing codebase that will be followed to 
 [succinct code examples from existing codebase demonstrating the pattern]
 ```
 
-```
-[succinct code examples from proposed end state architecture demonstrating the pattern]
-```
-
-#### [title Second pattern from the research]
+#### [title second pattern]
 
 ...
 ````
