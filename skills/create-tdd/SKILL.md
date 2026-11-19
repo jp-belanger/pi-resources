@@ -44,9 +44,11 @@ There is no required upstream artifact. The product context might be a full PRD,
 - If the product context is thin, don't invent requirements. Surface the gaps as questions during the interview and let the user fill them in.
 - The TDD answers HOW to build what those inputs describe. If a technical decision changes product scope or user-visible behavior, call it out for the user (and update the PRD if one exists).
 
+If `.tasks/{task}/` already has documents for this work, read them in full for the task's context.
+
 ## 2. Write the skeleton
 
-Write the doc to `.tasks/{task}/tdd.md` at the project root. Create the directory lazily. `{task}` names the piece of work: if a PRD for this work already exists under `.tasks/`, reuse its folder. Otherwise use the ticket ID plus a short slug when there's a ticket (`eng-1234-artifact-sync`), or just the slug (`artifact-sync`). Use lowercase kebab-case.
+Write the doc to `.tasks/{task}/tdd.md` at the project root. Reuse the task folder if one exists for this work. Otherwise create it: `{task}` is a short lowercase kebab-case slug that names the piece of work (`artifact-sync`).
 
 Use the template in [TDD-FORMAT.md](./TDD-FORMAT.md). **Keep the skeleton as minimal as possible. No preamble, no setup, no summaries.** The faster you reach the first question, the more the user stays engaged in building the TDD. Write only:
 

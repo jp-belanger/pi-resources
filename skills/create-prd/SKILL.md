@@ -38,9 +38,11 @@ There is no required upstream artifact. The product context might be a detailed 
 - Don't duplicate upstream content into the PRD - reference it.
 - If the context is thin, don't invent requirements. Surface the gaps as questions during the interview and let the user fill them in.
 
+If `.tasks/{task}/` already has documents for this work, read them in full for the task's context.
+
 ## 2. Write the skeleton
 
-Write the doc to `.tasks/{task}/prd.md` at the project root. Create the directory lazily. `{task}` names the piece of work: the ticket ID plus a short slug when there's a ticket (`eng-1234-dead-letter-replay`), otherwise just the slug (`dead-letter-replay`). Use lowercase kebab-case.
+Write the doc to `.tasks/{task}/prd.md` at the project root. Reuse the task folder if one exists for this work. Otherwise create it: `{task}` is a short lowercase kebab-case slug that names the piece of work (`dead-letter-replay`).
 
 Use the template in [PRD-FORMAT.md](./PRD-FORMAT.md). **Keep the skeleton as minimal as possible. No preamble, no setup, no summaries.** The faster you reach the first question, the more the user stays engaged in building the PRD. Write only:
 
@@ -50,7 +52,7 @@ Use the template in [PRD-FORMAT.md](./PRD-FORMAT.md). **Keep the skeleton as min
 
 Then respond immediately by opening the foundation with the **first question** - at most one short orienting line, then the question. Quote the actual "Problem to Solve" content you drafted so the user reacts to the exact wording, not a summary. For example:
 
-> I've started the PRD at `.tasks/eng-1234-dead-letter-replay/prd.md`. First question: does this **Problem to Solve** sound right?
+> I've started the PRD at `.tasks/dead-letter-replay/prd.md`. First question: does this **Problem to Solve** sound right?
 >
 > > ...your statement of the problem...
 >
