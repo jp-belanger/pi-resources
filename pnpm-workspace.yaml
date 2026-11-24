@@ -1,5 +1,14 @@
 verifyDepsBeforeRun: false
 
+# 10 days, in minutes.
+minimumReleaseAge: 14400
+
+# Type-check against the pi-ai, pi-tui and typebox versions the pinned
+# pi-coding-agent ships, which are the ones Pi gives extensions at runtime.
+publicHoistPattern:
+  - '@earendil-works/*'
+  - typebox
+
 allowBuilds:
   '@google/genai': true
   protobufjs: true

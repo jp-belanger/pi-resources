@@ -12,6 +12,10 @@ clean:
 install:
     pnpm install --frozen-lockfile
 
-# Check formatting, linting, and tests.
+# Update dev dependencies to the newest versions at least 10 days old.
+update:
+    pnpm update --latest
+
+# Auto-fix formatting and lint, then fail on anything left, including type errors.
 check:
     pnpm run check

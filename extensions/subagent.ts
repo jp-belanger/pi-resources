@@ -2,7 +2,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { mkdirSync, realpathSync, renameSync, rmSync, statSync } from "node:fs";
 import { isAbsolute, join, relative, resolve, sep } from "node:path";
-import { StringEnum } from "@earendil-works/pi-ai";
 import {
   type ExtensionAPI,
   type ExtensionContext,
@@ -26,6 +25,7 @@ import {
   subagentRunsDir,
   writeSubagentRun,
 } from "./subagent/run-store.ts";
+import { stringEnumSchema } from "./subagent/string-enum.ts";
 import {
   killSubagentProcess,
   launchSubagentProcess,
@@ -213,7 +213,7 @@ export default function subagentExtension(pi: ExtensionAPI): void {
       cwd: Type.Optional(Type.String()),
       provider: Type.Optional(Type.String()),
       model: Type.Optional(Type.String()),
-      thinking: Type.Optional(StringEnum(thinkingLevels)),
+      thinking: Type.Optional(stringEnumSchema(thinkingLevels)),
     }),
     async execute(_id, params, signal, _update, ctx) {
       if (signal?.aborted) throw new Error("Subagent spawn cancelled");
@@ -271,7 +271,7 @@ export default function subagentExtension(pi: ExtensionAPI): void {
     parameters: Type.Object({
       handle: handleSchema,
       message: Type.String(),
-      delivery: Type.Optional(StringEnum(["steer", "followUp"] as const)),
+      delivery: Type.Optional(stringEnumSchema(["steer", "followUp"])),
     }),
     async execute(_id, params, _signal, _update, ctx) {
       if (!params.message.trim())
